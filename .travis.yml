@@ -1,22 +1,31 @@
----
 language: node_js
 node_js:
-  - "4"
-
+- '4'
+env:
+  - CXX=g++-4.8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-4.8
 sudo: false
-
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 before_install:
-  - npm config set spin false
-  - npm install -g bower
-  - npm install phantomjs-prebuilt
-
+- npm config set spin false
+- npm install -g bower
+- npm install phantomjs-prebuilt
 install:
-  - npm install
-  - bower install
-
+- npm install
+- bower install
 script:
-  - npm test
+- npm test
+deploy:
+  provider: heroku
+  api_key:
+    secure: jte3FakBqLM1QiVNHy1JUlif5qck9QXitG4QLMPrJRbZD7R2CGNBENVZh+/dLSTlhqRUK3Od8VtHuP6gqdF5YcChD+gFR47wY+xFjYsaTQdXBlCA+r7c6xeOA+ZQLyd7AMBgIlv/E+++hqoi1XTp8RGO2xY72sMDhlJXV22MLHQKHdDcSWvErVIkVraRogu0c/IfNgVG80SKKQM6kKSUCoTWPHzs1K70YHUq0peIXwjtmwKuiSSAUC6F85O83k709w+VxuAzmwI2dFVgCEzXUbIRcNPhob4MWBbf6mgIq479mj48PLbMFEpIZsasazuO64VnTHPrJzCuz38FkYE5enzSFPibBv3rc5poMQWHGvwp78NTSM1o0cl8/RLC1ODogsySAxwiOkZ5cJfDKQq+hT1XVAYAGLDXukzfhvSesfy10OqrybLekz5Bxfid4hnGAWVj2nSBq8cXcYOEIgCOe7aJETqVGgbgUrnveQbpSQqMr3e82Jyw756YRnxm1ZybOjNdG/ej/simQZAxAYzh/o1rbqTMPSj+yh3lK89/d96lBlEfbGXrDauGoRjxKcon9gR2uMvzsFhqR9tzBoJzq21AWO/X6cFaK13MDNQy8lCegH1rbjgxZvs4Z2EK3oPK/+touYn4eaJKp14HGyt0R8fKfB/xznzZm0IVPanpyac=
+  app: secret-meadow-35025
+  on:
+    repo: thomascchen/peepchat-ui
