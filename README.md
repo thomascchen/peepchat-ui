@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thomascchen/peepchat-ui.svg?branch=master)](https://travis-ci.org/thomascchen/peepchat-ui)
+
 # Peepchat
 
 This README outlines the details of collaborating on this Ember application.
